@@ -1,20 +1,29 @@
-name: Build
+name: Build 
+
 on:
   push:
     branches:
       - main
   pull_request:
     types: [opened, synchronize, reopened]
+
 jobs:
   sonarqube:
-    name: SonarQube
+    name: SonarQube Analysis
     runs-on: windows-latest
-    steps:
-      - uses: SonarSource/sonarqube-scan-action@v6
 
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+          fetch-depth: 0  # necessario per alcune analisi SonarQube
+
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v6
         env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}        # token SonarCloud/SonarQube
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}  # es. https://sonarcloud.io
+        with:
+          projectBaseDir: "."                             # dove si trova il sonar-project.properties
+          projectKey: "Simon02-jpg_ISPW2025"             # obbligatorio
+          organization: "simon02-jpg-1"                  # obbligatorio su SonarCloud
