@@ -21,9 +21,10 @@ jobs:
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v6
         env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}        # token SonarCloud/SonarQube
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}  # es. https://sonarcloud.io
         with:
-          projectBaseDir: "."                             # dove si trova il sonar-project.properties
-          projectKey: "Simon02-jpg_ISPW2025"             # obbligatorio
-          organization: "simon02-jpg-1"                  # obbligatorio su SonarCloud
+          projectBaseDir: "."
+          projectKey: "Simon02-jpg_ISPW2025"
+          organization: "simon02-jpg-1"
+          
