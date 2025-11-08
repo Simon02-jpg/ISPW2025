@@ -10,7 +10,7 @@ jobs:
     name: SonarQube
     runs-on: windows-latest
     steps:
-      - uses: SonarSource/sonarqube-scan-action@d3a8b2e5e2cfab24a8b5b1f827a3d98b4e32fa7b
+      - uses: SonarSource/sonarqube-scan-action@v6
 
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
