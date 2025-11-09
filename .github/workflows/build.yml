@@ -1,4 +1,4 @@
-name: Build 
+name: Build
 
 on:
   push:
@@ -16,15 +16,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # necessario per alcune analisi SonarQube
+          fetch-depth: 0
 
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v6
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}  # es. https://sonarcloud.io
-        with:
-          projectBaseDir: "."
-          projectKey: "Simon02-jpg_ISPW2025"
-          organization: "simon02-jpg-1"
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+
           
